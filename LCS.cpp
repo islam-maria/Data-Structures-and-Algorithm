@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 
-#define Maximum 1001
-char a[Maximum], b[Maximum];
-int dp[Maximum][Maximum];
-char visited[Maximum][Maximum];
+#define MAX_LENGTH 1001 // Renamed max to MAX_LENGTH
+char a[MAX_LENGTH], b[MAX_LENGTH];
+int dp[MAX_LENGTH][MAX_LENGTH];
+char visited[MAX_LENGTH][MAX_LENGTH];
 
-int max(int a, int b)
+int maximum(int a, int b) // Renamed max to maximum
 {
     return (a > b) ? a : b;
 }
@@ -21,7 +21,7 @@ int lcs(int i, int j)
     if (a[i] == b[j])
         ans = 1 + lcs(i + 1, j + 1);
     else
-        ans = max(lcs(i, j + 1), lcs(i + 1, j));
+        ans = maximum(lcs(i, j + 1), lcs(i + 1, j));
     visited[i][j] = 1;
     dp[i][j] = ans;
     return dp[i][j];
